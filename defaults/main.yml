@@ -2,4 +2,4 @@
 # defaults file for antonchernik.php-gearman-client
 default_download_directory: /tmp
 gearman_client_tarball_url: https://github.com/wcgallego/pecl-gearman/archive/master.tar.gz
-gearman_client_tarball_directory: master
+gearman_client_tarball_directory: pecl-gearman-master

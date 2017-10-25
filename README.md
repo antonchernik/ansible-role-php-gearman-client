@@ -21,8 +21,8 @@ Available variables are listed below, along with default values (see defaults/ma
 | Parameter | Required | Default | Choices | Comments |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | default_download_directory | yes | /tmp | | Sets directory where files will be downloaded |
-| gearman_client_tarball_url | yes | https://github.com/wcgallego/pecl-gearman/archive/master.zip | | Sets php Gearman client tarball url |
-| gearman_client_tarball_directory | yes | gearman-1.1.2 | | Sets php Gearman extract directory |
+| gearman_client_tarball_url | yes | https://github.com/wcgallego/pecl-gearman/archive/master.tar.gz | | Sets php Gearman client tarball url |
+| gearman_client_tarball_directory | yes | pecl-gearman-master | | Sets php Gearman extract directory |
 
 
 Dependencies

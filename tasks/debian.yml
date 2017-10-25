@@ -1,0 +1,37 @@
+- name: PHP GEARMAN CLIENT | Install list of php gearman client nessesary packages
+  apt: name={{item}}
+  with_items:
+    - gcc
+    - g++
+    - libboost-dev
+    - libboost-program-options-dev
+    - libboost-all-dev
+    - libevent-dev
+    - cloog-ppl
+    - gperf
+    - uuid-dev
+    - libgearman-dev
+    - php5-dev
+    - supervisor
+
+- unarchive:
+   src: "{{ gearman_client_tarball_url }}"
+   dest: "{{ default_download_directory }}"
+   remote_src: true
+
+- name: PHP GEARMAN CLIENT | Phpize
+  command: "chdir={{ default_download_directory }}/{{ gearman_client_tarball_directory }} {{ item }}"
+  with_items:
+   - phpize
+   - ./configure
+   - make
+   - make install
+
+- name: PHP GEARMAN CLIENT | Write 20-gearman.ini
+  copy: src=gearman.ini dest=/etc/php5/cli/conf.d/20-gearman.ini owner=root group=root mode=0644
+
+- name: PHP GEARMAN CLIENT | Write 20-gearman.ini
+  copy: src=gearman.ini dest=/etc/php5/fpm/conf.d/20-gearman.ini owner=root group=root mode=0644
+
+- name: PHP GEARMAN CLIENT | Ensure php5-fpm is restarted
+  action: service name=php5-fpm state=restarted

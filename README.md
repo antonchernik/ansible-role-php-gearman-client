@@ -2,14 +2,12 @@ Php gearman client
 =========
 
 Ansible role for installing php gearman client. Tested platforms are:
-* Debian 8
 * Debian 9
 * Ubuntu 16
 
 Requirements
 ------------
 
-Debian 8 (jessie)
 Debian 9 (stretch)
 Ubuntu 16 (xenial)
 
@@ -23,6 +21,7 @@ Available variables are listed below, along with default values (see defaults/ma
 | default_download_directory | yes | /tmp | | Sets directory where files will be downloaded |
 | gearman_client_tarball_url | yes | https://github.com/wcgallego/pecl-gearman/archive/master.tar.gz | | Sets php Gearman client tarball url |
 | gearman_client_tarball_directory | yes | pecl-gearman-master | | Sets php Gearman extract directory |
+| default_php_version | yes | 5.6 | | Sets php setup version |
 
 
 Dependencies

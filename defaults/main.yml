@@ -3,3 +3,4 @@
 default_download_directory: /tmp
 gearman_client_tarball_url: https://github.com/wcgallego/pecl-gearman/archive/master.tar.gz
 gearman_client_tarball_directory: pecl-gearman-master
+default_php_version: 5.6

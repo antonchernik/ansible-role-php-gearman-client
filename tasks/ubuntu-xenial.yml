@@ -45,6 +45,13 @@
   become: true
   when: default_php_version == 5.6
 
+- name: PHP-FPM ROLE | Starting PHP-FPM
+  service:
+   name: php5.6-fpm
+   state: restarted
+  when: default_php_version == 5.6
+
+
 - name: PHP GEARMAN CLIENT | Write 20-gearman.ini
   copy: src=gearman.ini dest=/etc/php/7.0/mods-available/20-gearman.ini owner=root group=root mode=0644
   when: default_php_version == 7.0
@@ -62,3 +69,59 @@
     state: link
   become: true
   when: default_php_version == 7.0
+
+- name: PHP-FPM ROLE | Restarting PHP-FPM
+  service:
+   name: php7.0-fpm
+   state: restarted
+  when: default_php_version == 7.0
+
+- name: PHP GEARMAN CLIENT | Write 20-gearman.ini
+  copy: src=gearman.ini dest=/etc/php/7.1/mods-available/20-gearman.ini owner=root group=root mode=0644
+  when: default_php_version == 7.1
+
+- file:
+    src: /etc/php/7.1/mods-available/20-gearman.ini
+    dest: /etc/php/7.1/cli/conf.d/20-gearman.ini
+    state: link
+  become: true
+  when: default_php_version == 7.1
+
+- file:
+    src: /etc/php/7.1/mods-available/20-gearman.ini
+    dest: /etc/php/7.1/fpm/conf.d/20-gearman.ini
+    state: link
+  become: true
+  when: default_php_version == 7.1
+
+- name: PHP-FPM ROLE | Restarting PHP-FPM
+  service:
+   name: php7.1-fpm
+   state: restarted
+  when: default_php_version == 7.1
+
+- name: PHP GEARMAN CLIENT | Write 20-gearman.ini
+  copy: src=gearman.ini dest=/etc/php/7.2/mods-available/20-gearman.ini owner=root group=root mode=0644
+  when: default_php_version == 7.2
+
+- file:
+    src: /etc/php/7.2/mods-available/20-gearman.ini
+    dest: /etc/php/7.2/cli/conf.d/20-gearman.ini
+    state: link
+  become: true
+  when: default_php_version == 7.2
+
+- file:
+    src: /etc/php/7.2/mods-available/20-gearman.ini
+    dest: /etc/php/7.2/fpm/conf.d/20-gearman.ini
+    state: link
+  become: true
+  when: default_php_version == 7.2
+
+- name: PHP-FPM ROLE | Restarting PHP-FPM
+  service:
+   name: php7.2-fpm
+   state: restarted
+  when: default_php_version == 7.2
+
+
